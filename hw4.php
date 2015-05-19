@@ -9,11 +9,21 @@
                                                                                                                         //    echo $f;
                                                                                                                         //    var_dump($f);
     $g = $f - $v;
-    $a = mb_substr($string,$v,$g);      //вычисляем кусок текста
+    $str = mb_substr($string,$v,$g);      //вычисляем кусок текста
+
+
+    function mb_trim($str) {
+        return mb_ereg_replace(
+            '^[[:space:]]*([\s\S]*?)[[:space:]]*$', '\1', $str );
+    }
+
+var_dump($str);
+
+
                                                                                                                         //    echo $a;
                                                                                                                         //    var_dump($a);
 
-    $arr = explode(" ", $a); //разбиваем строку на массив
+    $arr = explode(" ", $str); //разбиваем строку на массив
                                                                                                                         //    print_r($arr);
                                                                                                                         //    echo "<br>";
 
@@ -37,12 +47,14 @@
     $result = array_search( $max, $tmp);
     echo 'Самый повторяющийся элемент массива: ', $result, '. Он повторяется ', $max, ' раз(а).';
     echo "<br>";
-
+//var_dump($tmp);
     $min = min($tmp);
+//var_dump($min);
     echo 'Самые редкие слова, повторяются '."$min".' раз:';
     foreach($tmp as $key => $value){
         if ($value = $min);
-        echo "$key ,";
+        $arrmin = $key;
+        echo "$arrmin ,";
     }
 
     echo '<table border="1" cellpadding="5">';   //таблица слов с кол-вом повторений
