@@ -2,31 +2,23 @@
     $string = file_get_contents('http://source-it.com.ua/teachers/');
     $string = strip_tags($string);
 
-    $v = mb_strpos($string,"Татьяна Муращенко");  //находим позицию начального элемента
+    $pozica = mb_strpos($string,"Татьяна Муращенко");  //находим позицию начального элемента
                                                                                                                         //    echo $v;
                                                                                                                         //    var_dump($v);
-    $f = mb_strpos($string,"Полный перечень наших курсов:"); //находим позицию конечного элемента
+    $pozicb = mb_strpos($string,"Полный перечень наших курсов:"); //находим позицию конечного элемента
                                                                                                                         //    echo $f;
                                                                                                                         //    var_dump($f);
-    $g = $f - $v;
-    $str = mb_substr($string,$v,$g);      //вычисляем кусок текста
+    $text = $pozicb - $pozica;
+    $str = mb_substr($string,$pozica,$text);      //вычисляем кусок текста
 
-
-    function mb_trim($str) {
-        return mb_ereg_replace(
-            '^[[:space:]]*([\s\S]*?)[[:space:]]*$', '\1', $str );
-    }
-
-var_dump($str);
-
-
-                                                                                                                        //    echo $a;
+//    $str = str_replace(array('_', '-', '—', '(', ')', '“', '”', '«', '»', '.', ':', '+', '/'), ' ', trim($str));
+//    $str=preg_replace('  ', ' ', $str);
+                                                                                                                        //   var_dump($str);
                                                                                                                         //    var_dump($a);
 
     $arr = explode(" ", $str); //разбиваем строку на массив
                                                                                                                         //    print_r($arr);
                                                                                                                         //    echo "<br>";
-
     function trim_value(&$value)     //убираем символы из элементов массива
     {
         $value = trim($value, "()“”«».:-—,");
@@ -47,13 +39,14 @@ var_dump($str);
     $result = array_search( $max, $tmp);
     echo 'Самый повторяющийся элемент массива: ', $result, '. Он повторяется ', $max, ' раз(а).';
     echo "<br>";
-//var_dump($tmp);
+                                                                                                                        //var_dump($tmp);
     $min = min($tmp);
-//var_dump($min);
+                                                                                                                        //var_dump($min);
     echo 'Самые редкие слова, повторяются '."$min".' раз:';
-    foreach($tmp as $key => $value){
-        if ($value = $min);
-        $arrmin = $key;
+    $tmpmin = array_flip($tmp);
+    foreach($tmpmin as $key => $value){
+        if ($key = $min);
+        $arrmin = $value;
         echo "$arrmin ,";
     }
 
