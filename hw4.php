@@ -1,4 +1,5 @@
 <?php
+
     $string = file_get_contents('http://source-it.com.ua/teachers/');
     $string = strip_tags($string);
 
@@ -11,7 +12,7 @@
     $text = $pozicb - $pozica;
     $str = mb_substr($string,$pozica,$text);      //вычисляем кусок текста
 
-//    $str = str_replace(array('_', '-', '—', '(', ')', '“', '”', '«', '»', '.', ':', '+', '/'), ' ', trim($str));
+    $str = str_replace(array('_', '-', '—', '(', ')', '“', '”', '«', '»', '.', ':', '+', '/'), ' ', trim($str));
 //    $str=preg_replace('  ', ' ', $str);
                                                                                                                         //   var_dump($str);
                                                                                                                         //    var_dump($a);
@@ -19,12 +20,12 @@
     $arr = explode(" ", $str); //разбиваем строку на массив
                                                                                                                         //    print_r($arr);
                                                                                                                         //    echo "<br>";
-    function trim_value(&$value)     //убираем символы из элементов массива
-    {
-        $value = trim($value, "()“”«».:-—,");
-    }
-
-    array_walk($arr, 'trim_value');
+//    function trim_value(&$value)     //убираем символы из элементов массива
+//    {
+//        $value = trim($value, "()“”«».:-—,");
+//    }
+//
+//    array_walk($arr, 'trim_value');
                                                                                                                         //    var_dump($arr);
 //    preg_match('#Преподаватели Source IT(.*)Полный перечень наших курсов:#is', $string, $matches);
                                                                                                                         //    var_dump($matches);
